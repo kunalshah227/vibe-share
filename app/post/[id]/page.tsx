@@ -15,7 +15,7 @@ export default async function PostPage({ params }: Props) {
 
   const { data: post } = await supabase
     .from("posts")
-    .select("*, profiles(id, username, avatar_url)")
+    .select("*, profiles!posts_user_id_fkey(id, username, avatar_url)")
     .eq("id", id)
     .maybeSingle();
 
@@ -34,7 +34,7 @@ export default async function PostPage({ params }: Props) {
       : Promise.resolve({ data: null }),
     supabase
       .from("comments")
-      .select("*, profiles(id, username, avatar_url)")
+      .select("*, profiles!comments_user_id_fkey(id, username, avatar_url)")
       .eq("post_id", id)
       .order("created_at", { ascending: true }),
   ]);

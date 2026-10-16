@@ -19,7 +19,7 @@ export default async function CreatorPage({ params }: Props) {
 
   const { data } = await supabase
     .from("posts")
-    .select("*, profiles(id, username, avatar_url), likes(count), comments(count)")
+    .select("*, profiles!posts_user_id_fkey(id, username, avatar_url), likes(count), comments(count)")
     .eq("user_id", profile.id)
     .order("created_at", { ascending: false });
 
