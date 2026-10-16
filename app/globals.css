@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100 antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.18), transparent),
+    radial-gradient(ellipse 40% 40% at 100% 0%, rgba(14, 165, 233, 0.08), transparent);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-zinc-700;
+}
+
+input,
+textarea,
+select {
+  @apply outline-none;
+}
+
+.masonry {
+  columns: 1;
+  column-gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry {
+    columns: 3;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
